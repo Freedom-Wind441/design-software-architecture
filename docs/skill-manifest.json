@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "sha256": {
+    "LICENSE": "2554f9f773fe6eb46e03ac060d677e9bca28d53a48e6f15522e0a8fb0d7e0d8e",
+    "SKILL.md": "c318de2ec81c847ccd4b779b6074a495dd06beb51c7816c52e28e6ad5fd042f8",
+    "agents/openai.yaml": "5ff1d5f9b3a38f5b7c08f6f82dad1b38bf4bcf28d2b377356fb5107babfabcff",
+    "assets/icon.svg": "e9301497fa98ef56aaca7ede0857b9a18dc06c34040f0679c609a6bf49b1d38b",
+    "references/boundaries-and-state.md": "8edd55ae5156b67f7e1005f9646fa3711f67b998d953719dde624d6c6915484e",
+    "references/incremental-migration.md": "b68ed211766c43c97d7243abc61af694df98c8f99b7186ab81a2df5bc4e160d9",
+    "references/preferences-capabilities-and-adaptation.md": "611c926fd8ca2d5e85752ef77f153b1347fa854c2b5ab52d0208b798bfd91ce8",
+    "references/verification-and-delivery.md": "691586bf14b7ee319b86c154e77607267c32d51da850eb03f44796443a29546f"
+  }
+}
