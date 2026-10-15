@@ -1,7 +1,7 @@
 interface:
-  display_name: "软件架构设计与渐进迁移"
-  short_description: "按项目规模设计职责与依赖边界，渐进迁移旧工程并用实际证据验收"
-  default_prompt: "使用 $design-software-architecture 检查当前工程，选择适合其规模的架构，落实必要修改并验证职责、依赖与兼容性。"
+  display_name: "Software Architecture"
+  short_description: "Design boundaries, migrate safely, verify with evidence"
+  default_prompt: "Use $design-software-architecture to inspect this project, choose architecture that fits its scale, implement necessary changes, and verify responsibilities, dependencies, and compatibility."
   icon_small: "./assets/icon.svg"
   icon_large: "./assets/icon.svg"
 policy:
