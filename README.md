@@ -1,68 +1,139 @@
-# 软件架构设计与渐进迁移
+<div align="center">
 
-面向 AI 编程助手的 `design-software-architecture` Skill，用于新项目架构设计、现有工程的职责与依赖审计、数据流梳理、渐进重构和跨平台扩展。
+<img src="./skills/design-software-architecture/assets/icon.svg" width="88" height="88" alt="Software Architecture" />
 
-根据项目规模选择适度架构，保护已有行为与数据；不强制五层，不因普通 UI 调整扩大为架构重写。架构判断需要源码、实际依赖和验证结果支持，不能仅靠目录名称或编译成功。
+# Software Architecture
 
-## 与 Reasoning Workflow 的关系
+### Design boundaries that fit the project. Migrate without losing behavior.
 
-- **本 Skill**：补充软件架构专项规则，包括职责边界、依赖方向、状态所有权、迁移和验收。
-- **[Reasoning Workflow](https://github.com/zy839971925-zyy/Agent--deep-research-Workflow-Skills)**：由第三方 `zy839971925-zyy` 独立维护，提供任务理解、证据、推理与执行控制。
+An Agent Skill for architecture design, dependency and state audits, incremental refactoring, and cross-platform adaptation.
 
-两者可以配合使用。Reasoning Workflow 不可用时，本 Skill 仍完成架构专项工作，并明确未调用前者。本仓库不复制或打包 Reasoning Workflow，也不将其归为本项目作者的作品；其安装、版本与许可证以原仓库为准。
+**English** · [简体中文](./README.zh-CN.md)
 
-## 安装
+[![Version](https://img.shields.io/badge/version-0.2.0-2563eb)](./CHANGELOG.md)
+[![License: MIT](https://img.shields.io/badge/license-MIT-475569)](./LICENSE)
+[![Validation](https://github.com/Freedom-Wind441/design-software-architecture/actions/workflows/validate.yml/badge.svg)](https://github.com/Freedom-Wind441/design-software-architecture/actions/workflows/validate.yml)
 
-### Codex
+[Quick start](#quick-start) · [Capabilities](#capabilities) · [Examples](#examples) · [Validation](#validation-and-compatibility) · [Changes](./CHANGELOG.md)
 
-在支持 `$skill-installer` 的 Codex 中输入：
+**[Browse the Skill](./skills/design-software-architecture/)** · [Read the rules](./skills/design-software-architecture/SKILL.md)
+
+</div>
+
+---
+
+## Quick start
+
+In Codex with `$skill-installer`, ask:
 
 ```text
 $skill-installer install https://github.com/Freedom-Wind441/design-software-architecture/tree/main/skills/design-software-architecture
 ```
 
-也可将整个 `skills/design-software-architecture/` 文件夹复制到：
-
-- 项目内：`.agents/skills/design-software-architecture/`
-- 用户级：`~/.agents/skills/design-software-architecture/`
-
-保留文件夹名称和内部结构；不要只复制 `SKILL.md`。Codex 通常会自动发现，未显示时重启。安装器下载和客户端发现尚未在本次验证中实际执行。
-
-### 其他支持 Agent Skills 的宿主
-
-按宿主文档导入 `skills/design-software-architecture/` 文件夹。其他客户端尚未逐一实测，不能仅由结构兼容推断完整运行兼容。
-
-需要配合 Reasoning Workflow 时，从[其原仓库安装说明](https://github.com/zy839971925-zyy/Agent--deep-research-Workflow-Skills/blob/main/README.zh-CN.md)单独安装。
-
-## 使用示例
+Then use:
 
 ```text
-使用 $design-software-architecture，为这个新项目选择适合规模的架构。
-先明确主要用例、状态所有权和外部接入，再实现一条端到端用例及失败路径。
+Use $design-software-architecture to inspect this project, choose boundaries
+that fit its scale, implement the necessary changes, and verify behavior
+and dependency direction. Preserve existing UI, data, and update compatibility.
 ```
+
+For a reproducible version, replace `main` in the install URL with `v0.2.0`.
+
+<details>
+<summary>Manual installation and other hosts</summary>
+
+Copy the entire [`skills/design-software-architecture/`](./skills/design-software-architecture/) folder into a location documented by your host. Codex documents these locations:
+
+| Scope | Destination |
+| --- | --- |
+| Project | `.agents/skills/design-software-architecture/` |
+| User | `~/.agents/skills/design-software-architecture/` |
+
+Keep `SKILL.md`, `agents/`, `references/`, `assets/`, and `LICENSE` together. Do not copy only the entrypoint. If Codex does not discover an update, restart it. Other Agent Skills hosts may use different locations; check their documentation.
+
+</details>
+
+The Skill has no runtime scripts, API keys, fixed MCP services, or package dependencies. Repository validation uses Python and PyYAML separately. Project build and test tools depend on the project being changed.
+
+## Capabilities
+
+| Task | What the Skill guides |
+| --- | --- |
+| Start a project | Choose a proportionate structure; implement one end-to-end use case and its failure path first. |
+| Audit an existing project | Trace actual dependencies, data flow, state ownership, and write paths from current source. |
+| Refactor gradually | Select valuable migration slices while protecting behavior, UI, stored data, and installation identity. |
+| Add platforms or data sources | Separate stable contracts from provider, scheduling, credential, lifecycle, and rendering adapters. |
+| Combine automatic adaptation and customization | Preserve user intent; resolve effective settings from capabilities; isolate optional publication failures. |
+| Accept a change | Check structure and behavior separately; report exactly what was tested and what remains unknown. |
+
+Use simple functions or modules when they suffice. The Skill does not mandate five physical layers or turn ordinary UI edits into architecture rewrites. It guides an agent; it does not enforce dependency boundaries by itself.
+
+## Relationship to Reasoning Workflow
+
+| Skill | Responsibility | Maintainer |
+| --- | --- | --- |
+| **Software Architecture** | Architecture boundaries, dependency direction, state ownership, migration, and acceptance evidence | Freedom-Wind441 |
+| **[Reasoning Workflow](https://github.com/zy839971925-zyy/Agent--deep-research-Workflow-Skills)** | General task understanding, reasoning, evidence, and execution control | Independent third party: zy839971925-zyy |
+
+They can be composed. Install Reasoning Workflow separately using [its upstream instructions](https://github.com/zy839971925-zyy/Agent--deep-research-Workflow-Skills#start-in-30-seconds). If it is unavailable, this Skill still performs architecture work and must not claim to have invoked it.
+
+Reasoning Workflow is not copied, bundled, auto-installed, or claimed as this author's work. Its releases and license are governed by its own repository.
+
+## Examples
+
+### Design a new project
 
 ```text
-使用 $design-software-architecture，检查当前工程的职责、依赖与状态写入路径。
-在保留已有功能、UI 和数据兼容性的前提下，实施少量高价值的渐进迁移并验证。
+Use $design-software-architecture to design this new desktop application.
+Identify the main use cases, state owners, persistence needs, and external
+adapters. Implement one end-to-end path and its failure case before expanding.
 ```
+
+### Improve an existing project
 
 ```text
-同时使用 $reasoning-workflow 和 $design-software-architecture，分析增加第二个数据源的影响。
-本次只交付设计方案，不修改代码。
+Use $design-software-architecture to audit responsibilities, dependencies,
+and state writes in the current source. Implement a small set of valuable
+migrations. Preserve existing behavior, UI, and stored data; verify the result.
 ```
 
-## 文件与依赖
+### Plan adaptation without changing code
 
-可安装文件夹包含 `SKILL.md`、`agents/openai.yaml`、三份 `references/` 文档、`assets/icon.svg` 和 `LICENSE`。正文按需引用参考文件，所有本地引用保持在 Skill 内。
+```text
+Use $reasoning-workflow and $design-software-architecture to evaluate adding
+a second platform. Explain what can be reused, what needs an adapter, and how
+automatic capability detection can coexist with explicit user preferences.
+Deliver a design only; do not modify code.
+```
 
-本 Skill 是指令与参考资料，无运行脚本、固定 MCP 服务、API Key 或额外软件包依赖。实际工程的构建与测试工具由项目决定；Reasoning Workflow 属于可选协作 Skill，不是自动安装的工具依赖。
+## Repository map
 
-## 已验证范围
+| Location | Purpose |
+| --- | --- |
+| [`skills/design-software-architecture/SKILL.md`](./skills/design-software-architecture/SKILL.md) | Installable entrypoint and core rules |
+| [`references/`](./skills/design-software-architecture/references/) | Four focused references, loaded as needed |
+| [`agents/openai.yaml`](./skills/design-software-architecture/agents/openai.yaml) | English display metadata and invocation policy |
+| [`CHANGELOG.md`](./CHANGELOG.md) / [中文](./CHANGELOG.zh-CN.md) | Version history; current version is in [`VERSION`](./VERSION) |
+| [`VALIDATION.md`](./VALIDATION.md) / [中文](./VALIDATION.zh-CN.md) | Checks, provenance, and compatibility limits |
+| [`docs/design-references.md`](./docs/design-references.md) | Presentation references and the choices adopted |
+| [`scripts/validate.py`](./scripts/validate.py) | Repository checks; excluded from the installable Skill |
 
-截至 2026-10-12，已验证发布文件的 Agent Skills 基本结构、YAML 元数据、Codex 可选界面配置、相对路径、图标有效性、脱敏检查和核心规则保留。详情见 [VALIDATION.md](VALIDATION.md)。
+**Language:** repository documentation is available in English and Simplified Chinese. English is the default landing page and display metadata. The execution rules and four technical references remain in their original Chinese to preserve their wording; this release is not a full English translation of the Skill.
 
-验证依据：[Agent Skills 规范](https://agentskills.io/specification)、[OpenAI Skill 文档](https://learn.chatgpt.com/docs/build-skills)及[元数据校验说明](https://developers.openai.com/plugins/deploy/submission-errors)。本次验证属于静态文件与本地目录复制检查；未实测 Codex CLI/IDE 的加载、ChatGPT 导入、API 上传或 Windows/macOS 客户端运行。该仓库发布独立 Skill，尚未包含插件市场提交所需的插件清单。
+## Validation and compatibility
 
-## 许可证
+The release is checked against the [Agent Skills specification](https://agentskills.io/specification) and [OpenAI's Skill documentation](https://learn.chatgpt.com/docs/build-skills). See [the validation record](./VALIDATION.md) for reproducible checks and fingerprints.
 
-采用 [MIT License](LICENSE)，版权署名为 `Copyright (c) 2026 Freedom-Wind441`。可安装文件夹也包含相同的许可证，单独安装时请保留。Reasoning Workflow 的许可独立适用，以其原仓库为准。
+Static structure, metadata, local links, icon XML, license consistency, version consistency, and clean installation-layout copying are checked. These checks do not establish successful loading or behavior in every host. Codex CLI/IDE loading, ChatGPT import, API upload, and Windows/macOS clients have not been tested in this release. No plugin marketplace manifest is included.
+
+To run repository checks:
+
+```bash
+python -m pip install -r requirements-dev.txt
+python scripts/validate.py
+```
+
+## License
+
+[MIT](./LICENSE) · Copyright (c) 2026 Freedom-Wind441. The installable folder includes the same license. Reasoning Workflow remains independently licensed upstream.
